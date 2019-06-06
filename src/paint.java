@@ -24,7 +24,7 @@ public class paint extends Application{
         brdpane.setTop(thiccRow);
         brdpane.setCenter(pane);
 
-        btSize.setStyle("-fx-font-size:15 ");
+        btSize.setStyle("-fx-font-size:16 ");
 
         pane.setOnMouseDragged(e->{
             Rectangle draw = new Rectangle(e.getX(),e.getY(),3,3);
