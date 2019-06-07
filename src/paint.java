@@ -71,7 +71,7 @@ public class paint extends Application{
         });
 
         pane.setOnMouseDragged(e->{
-            Rectangle draw = new Rectangle(e.getX(),e.getY(),50,50);
+            Rectangle draw = new Rectangle(e.getX(),e.getY(),10,10);
             draw.setFill(currentColor);
             pane.getChildren().add(draw);
         });
