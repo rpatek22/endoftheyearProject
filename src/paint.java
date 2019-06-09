@@ -40,7 +40,8 @@ public class paint extends Application{
                 "Blue",
                 "Green",
                 "Red",
-                "Yellow"
+                "Yellow",
+                "Eraser"
         );
         slider.setMin(1);
         slider.setMax(35);
@@ -54,6 +55,8 @@ public class paint extends Application{
         brdpane.setTop(thiccRow);
         brdpane.setCenter(pane);
 
+        pane.setStyle("-fx-background-color:WHITE");
+        thiccRow.setStyle("-fx-background-color:WHITE");
 
 
         btn.setStyle("-fx-font-size:16 ");
@@ -120,6 +123,8 @@ public class paint extends Application{
             return Color.BLACK;
         else if(colorName.equals("Green"))
             return Color.GREEN;
+        else if(colorName.equals("Eraser"))
+            return Color.WHITE;
         else {
             return Color.YELLOW;
         }
