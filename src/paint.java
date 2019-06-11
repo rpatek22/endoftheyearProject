@@ -28,6 +28,9 @@ public class paint extends Application{
     private Color currentColor = Color.BLACK;
     private double currentBrushSize =10 ;
     private Slider slider = new Slider();
+    private Slider sliderRed = new Slider();
+    private Slider sliderGreen = new Slider();
+    private Slider sliderBlue = new Slider();
     private TextField tfSize = new TextField("size");
 
     @Override
@@ -51,9 +54,16 @@ public class paint extends Application{
 
         thiccRow.getChildren().add(tfSize);
         thiccRow.getChildren().add(slider);
+        thiccRow.getChildren().add(sliderRed);
+        thiccRow.getChildren().add(sliderGreen);
+        thiccRow.getChildren().add(sliderBlue);
         thiccRow.getChildren().add(btn);
         brdpane.setTop(thiccRow);
         brdpane.setCenter(pane);
+
+        //settin slider colors
+
+
 
         pane.setStyle("-fx-background-color:WHITE");
         thiccRow.setStyle("-fx-background-color:WHITE");
