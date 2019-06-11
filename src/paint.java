@@ -24,7 +24,6 @@ public class paint extends Application{
     private Pane pane = new Pane();
     private Button btn = new Button("New Canvas");
     private ComboBox comboBox = new ComboBox();
-    private ComboBox dropColor = new ComboBox();
     private HBox thiccRow = new HBox();
     private BorderPane brdpane = new BorderPane();
     private Color currentColor = Color.BLACK;
@@ -37,20 +36,12 @@ public class paint extends Application{
 
     @Override
     public void start (Stage primaryStage){
-        comboBox.getItems().addAll(
-                "Black",
-                "Blue",
-                "Green",
-                "Red",
-                "Yellow",
-                "Eraser"
-        );
         slider.setMin(1);
         slider.setMax(35);
         slider.setValue(currentBrushSize);
 
         tfSize.setEditable(false);
-        thiccRow.getChildren().add(comboBox);
+        //thiccRow.getChildren().add(comboBox);
         tfSize.setPrefWidth(50);
         tfSize.setStyle( "-fx-text-box-border: transparent");
 
@@ -64,6 +55,20 @@ public class paint extends Application{
         brdpane.setCenter(pane);
 
         //settin slider colors
+        sliderRed.setMax(1);
+        sliderRed.setValue(0);
+        sliderRed.setMin(0);
+        sliderRed.valueProperty().addListener(e -> setColor());
+
+        sliderGreen.setMax(1);
+        sliderGreen.setValue(0);
+        sliderGreen.setMin(0);
+        sliderGreen.valueProperty().addListener(e -> setColor());
+
+        sliderBlue.setMax(1);
+        sliderBlue.setValue(0);
+        sliderBlue.setMin(0);
+        sliderBlue.valueProperty().addListener(e -> setColor());
 
 
 
@@ -85,14 +90,14 @@ public class paint extends Application{
         });
 
 
-        comboBox.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                String item = comboBox.getValue().toString();
-                Color drawColor = getColor(item);
-                currentColor = drawColor;
-            }
-        });
+        //comboBox.setOnAction(new EventHandler<ActionEvent>() {
+          //  @Override
+           //public void handle(ActionEvent event) {
+               // String item = comboBox.getValue().toString();
+               // Color drawColor = getColor(item);
+               // currentColor = drawColor;
+         //   }
+        //});
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -121,7 +126,12 @@ public class paint extends Application{
 
     }
 
-    public Color getColor(String colorName){
+    public void setColor()
+    {
+        currentColor = new Color(sliderRed.getValue(), sliderBlue.getValue(), sliderGreen.getValue(),1);
+    }
+
+  /*  public Color getColor(String colorName){
         if(colorName.equals("Red"))
             return Color.RED;
         else if(colorName.equals("Blue"))
@@ -135,7 +145,7 @@ public class paint extends Application{
         else {
             return Color.YELLOW;
         }
-    }
+    } */
 
    // clbtn.setOnAction(event -> {
        // Color color = Color.web(colour.getText());
