@@ -2,10 +2,8 @@
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.event.*;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -17,7 +15,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 import javax.swing.*;
-import java.awt.*;
+
 
 
 public class paint extends Application{
@@ -28,10 +26,9 @@ public class paint extends Application{
     private HBox thiccRow = new HBox();
     private BorderPane brdpane = new BorderPane();
     private Color currentColor = Color.BLACK;
-    //private boolean erase = false;
     private double currentBrushSize =10 ;
     private Slider slider = new Slider();
-
+    private TextField tfSize = new TextField("size");
 
     @Override
     public void start (Stage primaryStage){
@@ -47,9 +44,12 @@ public class paint extends Application{
         slider.setMax(35);
         slider.setValue(currentBrushSize);
 
+        tfSize.setEditable(false);
         thiccRow.getChildren().add(comboBox);
+        tfSize.setPrefWidth(50);
+        tfSize.setStyle( "-fx-text-box-border: transparent");
 
-
+        thiccRow.getChildren().add(tfSize);
         thiccRow.getChildren().add(slider);
         thiccRow.getChildren().add(btn);
         brdpane.setTop(thiccRow);
@@ -63,16 +63,11 @@ public class paint extends Application{
 
         pane.setOnMouseDragged(e->{
             Rectangle draw = new Rectangle(e.getX(),e.getY(),currentBrushSize,currentBrushSize);
-            draw.setFill(currentColor);
+            if (e.getY() >= 10) {
+                draw.setFill(currentColor);
 
-//            if(erase){
-//                pane.getChildren().add(draw);
-//
-//            }
-//            else {
-//                pane.getChildren().add(draw);
-//            }
-            pane.getChildren().add(draw);
+                pane.getChildren().add(draw);
+            }
 
 
         });
@@ -129,6 +124,14 @@ public class paint extends Application{
             return Color.YELLOW;
         }
     }
+
+   // clbtn.setOnAction(event -> {
+       // Color color = Color.web(colour.getText());
+       // R.setValue(color.getRed() * 255);
+       // G.setValue(color.getGreen() * 255);
+      //  B.setValue(color.getBlue() * 255);
+      //  circle.setFill(color);
+  //  });
 
     public void restart(){
         pane.getChildren().clear();
