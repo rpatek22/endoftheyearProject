@@ -33,6 +33,10 @@ public class paint extends Application{
     private Slider sliderGreen = new Slider();
     private Slider sliderBlue = new Slider();
     private TextField tfSize = new TextField("size");
+    private TextField tfRed = new TextField("Red");
+    private TextField tfGreen = new TextField("Green");
+    private TextField tfBlue = new TextField("Blue");
+    private Rectangle Colorrectangle;
 
     @Override
     public void start (Stage primaryStage){
@@ -40,17 +44,31 @@ public class paint extends Application{
         slider.setMax(35);
         slider.setValue(currentBrushSize);
 
+        //color box
+        Colorrectangle = new Rectangle(50,50);
+
+
         tfSize.setEditable(false);
         //thiccRow.getChildren().add(comboBox);
         tfSize.setPrefWidth(50);
         tfSize.setStyle( "-fx-text-box-border: transparent");
+        tfRed.setPrefWidth(50);
+        tfRed.setStyle( "-fx-text-box-border: transparent");
+        tfGreen.setPrefWidth(60);
+        tfGreen.setStyle( "-fx-text-box-border: transparent");
+        tfBlue.setPrefWidth(50);
+        tfBlue.setStyle( "-fx-text-box-border: transparent");
 
         thiccRow.getChildren().add(tfSize);
         thiccRow.getChildren().add(slider);
+        thiccRow.getChildren().add(tfRed);
         thiccRow.getChildren().add(sliderRed);
+        thiccRow.getChildren().add(tfGreen);
         thiccRow.getChildren().add(sliderGreen);
+        thiccRow.getChildren().add(tfBlue);
         thiccRow.getChildren().add(sliderBlue);
         thiccRow.getChildren().add(btn);
+        thiccRow.getChildren().add(Colorrectangle);
         brdpane.setTop(thiccRow);
         brdpane.setCenter(pane);
 
